@@ -1,0 +1,80 @@
+[
+    {
+      "image": "url_to_image_1",
+      "card_ID": "uuid_1",
+      "make": "Tesla",
+      "model": "Model S",
+      "year": 2022,
+      "rental_Price": 300.00,
+      "isAvailable": true,
+      "location": "New York",
+      "top_Speed": 200,
+      "acceleration": 2.4,
+      "horse_Power": 1020
+    },
+    {
+      "image": "url_to_image_2",
+      "card_ID": "uuid_2",
+      "make": "BMW",
+      "model": "i8",
+      "year": 2022,
+      "rental_Price": 350.00,
+      "isAvailable": false,
+      "location": "Los Angeles",
+      "top_Speed": 155,
+      "acceleration": 4.2,
+      "horse_Power": 369
+    },
+    {
+      "image": "url_to_image_3",
+      "card_ID": "uuid_3",
+      "make": "Audi",
+      "model": "R8",
+      "year": 2022,
+      "rental_Price": 400.00,
+      "isAvailable": true,
+      "location": "Miami",
+      "top_Speed": 205,
+      "acceleration": 3.2,
+      "horse_Power": 562
+    },
+    {
+        "image": "url_to_image_4",
+        "card_ID": "uuid_4",
+        "make": "Ford",
+        "model": "Mustang GT",
+        "year": 2023,
+        "rental_Price": 250.00,
+        "isAvailable": true,
+        "location": "Chicago",
+        "top_Speed": 155,
+        "acceleration": 4.0,
+        "horse_Power": 450
+      },
+      {
+        "image": "url_to_image_5",
+        "card_ID": "uuid_5",
+        "make": "Chevrolet",
+        "model": "Corvette",
+        "year": 2023,
+        "rental_Price": 300.00,
+        "isAvailable": false,
+        "location": "San Francisco",
+        "top_Speed": 184,
+        "acceleration": 2.9,
+        "horse_Power": 490
+      },
+      {
+        "image": "url_to_image_6",
+        "card_ID": "uuid_6",
+        "make": "Porsche",
+        "model": "911 Carrera",
+        "year": 2023,
+        "rental_Price": 350.00,
+        "isAvailable": true,
+        "location": "Las Vegas",
+        "top_Speed": 182,
+        "acceleration": 3.5,
+        "horse_Power": 379
+      }
+  ]
