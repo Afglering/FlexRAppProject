@@ -1,70 +1,89 @@
 [
-    {
-      "image": "../assets/profiles/profile.jpg",
-      "user_ID": "user_uuid_1",
-      "user_Name": "JohnDoge",
-      "email": "johndoge@example.com",
-      "password": "hashed_password_here",
-      "cars_Rented": [
-        {
-          "car_ID": "uuid_1",
-          "make": "Tesla",
-          "model": "Model S",
-          "year": 2022
-        },
-        {
-          "car_ID": "uuid_2",
-          "make": "BMW",
-          "model": "i8",
-          "year": 2022
-        }
-      ],
-      "cars_For_Rent": [
-        {
-          "car_ID": "uuid_3",
-          "make": "Audi",
-          "model": "R8",
-          "year": 2022
-        }
-      ],
-      "cars_Reviewed": ["uuid_1", "uuid_2", "uuid_3"],
-      "cars_Favoured": ["uuid_1", "uuid_3"]
-    },
-    {
-      "image": "../assets/profiles/profile1.jpg",
-      "user_ID": "user_uuid_2",
-      "user_Name": "JaneSmith",
-      "email": "janesmith@example.com",
-      "password": "hashed_password_here_2",
-      "cars_Rented": [],
-      "cars_For_Rent": [
-        {
-          "car_ID": "uuid_4",
-          "make": "Ford",
-          "model": "Mustang GT",
-          "year": 2023
-        }
-      ],
-      "cars_Reviewed": ["uuid_1", "uuid_4"],
-      "cars_Favoured": ["uuid_2", "uuid_3", "uuid_4"]
-    },
-    {
-      "image": "../assets/profiles/profile2.jpg",
-      "user_ID": "user_uuid_3",
-      "user_Name": "MikeJohnson",
-      "email": "mikejohnson@example.com",
-      "password": "hashed_password_here_3",
-      "cars_Rented": [
-        {
-          "car_ID": "uuid_3",
-          "make": "Audi",
-          "model": "R8",
-          "year": 2022
-        }
-      ],
-      "cars_For_Rent": [],
-      "cars_Reviewed": ["uuid_2", "uuid_3"],
-      "cars_Favoured": ["uuid_1", "uuid_4"]
-    }
-  ]
-  
+  {
+    "image": "../assets/profiles/profile.jpg",
+    "user_ID": "a123b456-c789-4d3e-0f12-1g345h678i90",
+    "user_Name": "JohnDoge",
+    "email": "johndoge@example.com",
+    "password": "hashed_password_here",
+    "cars_Rented": [
+      {
+        "car_ID": "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
+        "make": "Tesla",
+        "model": "Model S",
+        "year": 2022
+      },
+      {
+        "car_ID": "b8d17612-5b24-4d9d-8502-2e3f75eaf5e1",
+        "make": "BMW",
+        "model": "i8",
+        "year": 2022
+      }
+    ],
+    "cars_For_Rent": [
+      {
+        "car_ID": "c9e1074f-5a64-46f1-9a44-27e8e08ea85f",
+        "make": "Audi",
+        "model": "R8",
+        "year": 2022
+      }
+    ],
+    "cars_Reviewed": [
+      "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
+      "b8d17612-5b24-4d9d-8502-2e3f75eaf5e1",
+      "c9e1074f-5a64-46f1-9a44-27e8e08ea85f"
+    ],
+    "cars_Favoured": [
+      "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
+      "c9e1074f-5a64-46f1-9a44-27e8e08ea85f"
+    ]
+  },
+  {
+    "image": "../assets/profiles/profile1.jpg",
+    "user_ID": "b234c567-d890-5e4f-1a23-2g456h789j01",
+    "user_Name": "JaneSmith",
+    "email": "janesmith@example.com",
+    "password": "hashed_password_here_2",
+    "cars_Rented": [],
+    "cars_For_Rent": [
+      {
+        "car_ID": "d7a8b2f4-8f42-47d7-9d32-3b8b7401f4c9",
+        "make": "Ford",
+        "model": "Mustang GT",
+        "year": 2023
+      }
+    ],
+    "cars_Reviewed": [
+      "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
+      "d7a8b2f4-8f42-47d7-9d32-3b8b7401f4c9"
+    ],
+    "cars_Favoured": [
+      "b8d17612-5b24-4d9d-8502-2e3f75eaf5e1",
+      "c9e1074f-5a64-46f1-9a44-27e8e08ea85f",
+      "d7a8b2f4-8f42-47d7-9d32-3b8b7401f4c9"
+    ]
+  },
+  {
+    "image": "../assets/profiles/profile2.jpg",
+    "user_ID": "c345d678-e901-6f5g-2b34-3h567i890j12",
+    "user_Name": "MikeJohnson",
+    "email": "mikejohnson@example.com",
+    "password": "hashed_password_here_3",
+    "cars_Rented": [
+      {
+        "car_ID": "c9e1074f-5a64-46f1-9a44-27e8e08ea85f",
+        "make": "Audi",
+        "model": "R8",
+        "year": 2022
+      }
+    ],
+    "cars_For_Rent": [],
+    "cars_Reviewed": [
+      "b8d17612-5b24-4d9d-8502-2e3f75eaf5e1",
+      "c9e1074f-5a64-46f1-9a44-27e8e08ea85f"
+    ],
+    "cars_Favoured": [
+      "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
+      "d7a8b2f4-8f42-47d7-9d32-3b8b7401f4c9"
+    ]
+  }
+]
