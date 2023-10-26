@@ -14,7 +14,7 @@ export function InfoSwipe() {
       image: require("./assets/luxury2.jpg"), // Change to your actual path
       title: "Be A Super Car Owner, Without Breaking The Bank",
       descriptor:
-        "Owning a super car has never been easier. Spend your money and take our cars.",
+        "Owning a super car has never been easier. Give us your money and take our cars.",
     },
     {
       image: require("./assets/luxury3.jpg"), // Change to your actual path
