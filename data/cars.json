@@ -1,6 +1,6 @@
 [
     {
-      "image": "url_to_image_1",
+      "image": "../assets/cars/tesla.jpg",
       "card_ID": "uuid_1",
       "make": "Tesla",
       "model": "Model S",
@@ -13,7 +13,7 @@
       "horse_Power": 1020
     },
     {
-      "image": "url_to_image_2",
+      "image": "../assets/cars/bmw.jpg",
       "card_ID": "uuid_2",
       "make": "BMW",
       "model": "i8",
@@ -26,7 +26,7 @@
       "horse_Power": 369
     },
     {
-      "image": "url_to_image_3",
+      "image": "../assets/cars/audi.jpg",
       "card_ID": "uuid_3",
       "make": "Audi",
       "model": "R8",
@@ -39,7 +39,7 @@
       "horse_Power": 562
     },
     {
-        "image": "url_to_image_4",
+        "image": "../assets/cars/mustang.jpg",
         "card_ID": "uuid_4",
         "make": "Ford",
         "model": "Mustang GT",
@@ -52,7 +52,7 @@
         "horse_Power": 450
       },
       {
-        "image": "url_to_image_5",
+        "image": "../assets/cars/corvette.jpg5",
         "card_ID": "uuid_5",
         "make": "Chevrolet",
         "model": "Corvette",
@@ -65,7 +65,7 @@
         "horse_Power": 490
       },
       {
-        "image": "url_to_image_6",
+        "image": "../assets/cars/porsche.jpg",
         "card_ID": "uuid_6",
         "make": "Porsche",
         "model": "911 Carrera",
