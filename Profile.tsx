@@ -10,6 +10,8 @@ import {
 import users from "./data/users.json";
 import cars from "./data/cars.json";
 import { StackScreenProps } from "@react-navigation/stack";
+import FastImage from 'react-native-fast-image';
+
 
 type RootStackParamList = {
   Profile: { userId: string };
@@ -36,7 +38,10 @@ export function Profile({ route }: ProfileScreenProps) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Image style={styles.profileImage} source={require(user.image)} />
+        <Image 
+          style={styles.profileImage}
+          source={{ uri: user.image.toString()}}
+          />
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.username}>@{user.user_Name}</Text>
       </View>
@@ -58,7 +63,7 @@ export function Profile({ route }: ProfileScreenProps) {
             <Image
               key={car.car_ID}
               style={styles.carImage}
-              source={require(car.image)}
+              source={{ uri : car.image}}
             />
           ) : null
         )}
@@ -71,7 +76,7 @@ export function Profile({ route }: ProfileScreenProps) {
             <Image
               key={car.car_ID}
               style={styles.carImage}
-              source={require(car.image)}
+              source={{ uri : car.image}}
             />
           ) : null
         )}
