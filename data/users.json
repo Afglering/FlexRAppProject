@@ -67,7 +67,7 @@
   {
     "image": "../assets/profiles/profile2.jpg",
     "user_ID": "c345d678-e901-6f5g-2b34-3h567i890j12",
-    "user_Name": "MikeJohnson", 
+    "user_Name": "MikeJohnson",
     "name": "Mike Johnson",
     "email": "mikejohnson@example.com",
     "password": "hashed_password_here_3",

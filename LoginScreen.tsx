@@ -29,6 +29,7 @@ export function LoginScreen({
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  //function to handle login
   const handleLogin = () => {
     const user = users.find(
       (u) => u.user_Name === username && u.password === password
