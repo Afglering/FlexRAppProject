@@ -11,13 +11,13 @@ export function InfoSwipe() {
         "Rent amazing cars from all around, and display them on your social platforms.",
     },
     {
-      image: require("./assets/luxury2.jpg"), // Change to your actual path
+      image: require("./assets/luxury2.jpg"),
       title: "Be A Super Car Owner, Without Breaking The Bank",
       descriptor:
         "Owning a super car has never been easier. Give us your money and take our cars.",
     },
     {
-      image: require("./assets/luxury3.jpg"), // Change to your actual path
+      image: require("./assets/luxury3.jpg"),
       title: "Have A Super Car That's Not Being Used? Rent It Out!",
       descriptor:
         "Rent out your super car to others and make money while you're not using it.",
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    height: "60%", // Adjusting the height
+    height: "60%",
     width: "100%",
     resizeMode: "cover",
   },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 5,
     marginTop: -30,
-    maxHeight: "60%", // Setting a maximum height
+    maxHeight: "60%",
   },
   title: {
     fontSize: 24,
@@ -121,6 +121,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   paginationStyle: {
-    bottom: "40%", // Adjust this value to position the dots as desired above the card header
+    bottom: "40%",
   },
 });

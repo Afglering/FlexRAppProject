@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -3 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    elevation: 5, // For Android
+    elevation: 5, 
     marginTop: -30,
   },
   button: {
