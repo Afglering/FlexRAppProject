@@ -1,0 +1,70 @@
+[
+    {
+      "image": "url_to_user_image",
+      "user_ID": "user_uuid_1",
+      "user_Name": "JohnDoe123",
+      "email": "johndoe@example.com",
+      "password": "hashed_password_here",
+      "cars_Rented": [
+        {
+          "car_ID": "uuid_1",
+          "make": "Tesla",
+          "model": "Model S",
+          "year": 2022
+        },
+        {
+          "car_ID": "uuid_2",
+          "make": "BMW",
+          "model": "i8",
+          "year": 2022
+        }
+      ],
+      "cars_For_Rent": [
+        {
+          "car_ID": "uuid_3",
+          "make": "Audi",
+          "model": "R8",
+          "year": 2022
+        }
+      ],
+      "cars_Reviewed": ["uuid_1", "uuid_2", "uuid_3"],
+      "cars_Favoured": ["uuid_1", "uuid_3"]
+    },
+    {
+      "image": "url_to_user_image_2",
+      "user_ID": "user_uuid_2",
+      "user_Name": "JaneSmith",
+      "email": "janesmith@example.com",
+      "password": "hashed_password_here_2",
+      "cars_Rented": [],
+      "cars_For_Rent": [
+        {
+          "car_ID": "uuid_4",
+          "make": "Ford",
+          "model": "Mustang GT",
+          "year": 2023
+        }
+      ],
+      "cars_Reviewed": ["uuid_1", "uuid_4"],
+      "cars_Favoured": ["uuid_2", "uuid_3", "uuid_4"]
+    },
+    {
+      "image": "url_to_user_image_3",
+      "user_ID": "user_uuid_3",
+      "user_Name": "MikeJohnson",
+      "email": "mikejohnson@example.com",
+      "password": "hashed_password_here_3",
+      "cars_Rented": [
+        {
+          "car_ID": "uuid_3",
+          "make": "Audi",
+          "model": "R8",
+          "year": 2022
+        }
+      ],
+      "cars_For_Rent": [],
+      "cars_Reviewed": ["uuid_2", "uuid_3"],
+      "cars_Favoured": ["uuid_1", "uuid_4"]
+    }
+  ]
+  
