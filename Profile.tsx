@@ -7,57 +7,80 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import users from "./data/users.json"; 
+import cars from "./data/cars.json"; 
+import { StackScreenProps } from '@react-navigation/stack';
 
-export function Profile() {
+
+type RootStackParamList = {
+  Profile: { userId: string };
+};
+
+type ProfileScreenProps = StackScreenProps<RootStackParamList, 'Profile'>;
+
+
+export function Profile({ route }: ProfileScreenProps) {
+  const { userId } = route.params;
+  const user = users.find((u) => u.user_ID === userId);
+
+  if (!user) {
+    return <Text>User not found</Text>;
+  }
+
+  const rentedCars = user.cars_Rented
+    .map((carRented) => cars.find((car) => car.car_ID === carRented.car_ID))
+    .slice(0, 2);
+
+  const favouredCars = user.cars_Favoured
+    .map((carFavouredId) => cars.find((car) => car.car_ID === carFavouredId))
+    .slice(0, 2);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Image
           style={styles.profileImage}
-          source={require("./assets/profiles/profile.jpg")}
+          source={require(user.image)} 
         />
-        <Text style={styles.name}>John Doge</Text>
-        <Text style={styles.username}>@johndoge</Text>
+        <Text style={styles.name}>{user.name}</Text>
+        <Text style={styles.username}>@{user.user_Name}</Text>
       </View>
       <View style={styles.infoContainer}>
         <View style={styles.info}>
-          <Text style={styles.number}>X Cars</Text>
+          <Text style={styles.number}>{user.cars_Rented.length} Cars</Text>
           <Text style={styles.infoText}>Rented</Text>
         </View>
         <View style={styles.info}>
-          <Text style={styles.number}>X Cars</Text>
+          <Text style={styles.number}>{user.cars_Favoured.length} Cars</Text>
           <Text style={styles.infoText}>Favoured</Text>
-        </View>
-        <View style={styles.info}>
-          <Text style={styles.number}>X Cars</Text>
-          <Text style={styles.infoText}>Reviewed</Text>
         </View>
       </View>
       <View style={styles.section}>
         <Text style={styles.heading}>My Bookings</Text>
-        <TouchableOpacity
-          onPress={() => {
-            /* Button action here */
-          }}
-        >
-          <Text>View all</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.cards}>
-        <View style={styles.card}></View>
-        <View style={styles.card}></View>
+        {/* Render rented cars here */}
+        {rentedCars.map((car) =>
+          car ? (
+            <Image
+              key={car.car_ID}
+              style={styles.carImage}
+              source={require(car.image)}
+            />
+          ) : null
+        )}
       </View>
       <View style={styles.section}>
         <Text style={styles.heading}>Favoured Cars</Text>
-        <TouchableOpacity
-          onPress={() => {
-            /* Button action here */
-          }}
-        >
-          <Text>View all</Text>
-        </TouchableOpacity>
+        {/* Render favoured cars here */}
+        {favouredCars.map((car) =>
+          car ? (
+            <Image
+              key={car.car_ID}
+              style={styles.carImage}
+              source={require(car.image)}
+            />
+          ) : null
+        )}
       </View>
-      <View style={styles.card}></View>
       <TouchableOpacity
         style={styles.editButton}
         onPress={() => {
@@ -115,6 +138,12 @@ const styles = StyleSheet.create({
   section: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  carImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
     marginBottom: 10,
   },
   cards: {

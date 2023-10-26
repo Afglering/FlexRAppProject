@@ -5,13 +5,19 @@ import { LoginScreen } from "./LoginScreen";
 import { InfoSwipe } from "./InfoSwipe"; 
 import { Profile } from './Profile';
 
-const Stack = createStackNavigator();
+type RootStackParamList = {
+  InfoSwipe: undefined;
+  Login: undefined;
+  Profile: { userId: string }; // or undefined if you don't have any parameters for this screen
+};
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Login"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="InfoSwipe" component={InfoSwipe} />

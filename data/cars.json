@@ -1,7 +1,7 @@
 [
   {
     "image": "../assets/cars/tesla.jpg",
-    "card_ID": "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
+    "car_ID": "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
     "make": "Tesla",
     "model": "Model S",
     "year": 2022,
@@ -14,7 +14,7 @@
   },
   {
     "image": "../assets/cars/bmw.jpg",
-    "card_ID": "b8d17612-5b24-4d9d-8502-2e3f75eaf5e1",
+    "car_ID": "b8d17612-5b24-4d9d-8502-2e3f75eaf5e1",
     "make": "BMW",
     "model": "i8",
     "year": 2022,
@@ -27,7 +27,7 @@
   },
   {
     "image": "../assets/cars/audi.jpg",
-    "card_ID": "c9e1074f-5a64-46f1-9a44-27e8e08ea85f",
+    "car_ID": "c9e1074f-5a64-46f1-9a44-27e8e08ea85f",
     "make": "Audi",
     "model": "R8",
     "year": 2022,
@@ -40,7 +40,7 @@
   },
   {
     "image": "../assets/cars/mustang.jpg",
-    "card_ID": "d7a8b2f4-8f42-47d7-9d32-3b8b7401f4c9",
+    "car_ID": "d7a8b2f4-8f42-47d7-9d32-3b8b7401f4c9",
     "make": "Ford",
     "model": "Mustang GT",
     "year": 2023,
@@ -53,7 +53,7 @@
   },
   {
     "image": "../assets/cars/corvette.jpg5",
-    "card_ID": "e2f1a2b3-c4d5-46e7-8f6e-7d8c9a0b2f1e",
+    "car_ID": "e2f1a2b3-c4d5-46e7-8f6e-7d8c9a0b2f1e",
     "make": "Chevrolet",
     "model": "Corvette",
     "year": 2023,
@@ -66,7 +66,7 @@
   },
   {
     "image": "../assets/cars/porsche.jpg",
-    "card_ID": "f3c2d1e0-b5a4-4978-96e3-2a7b9c8d4f0e",
+    "car_ID": "f3c2d1e0-b5a4-4978-96e3-2a7b9c8d4f0e",
     "make": "Porsche",
     "model": "911 Carrera",
     "year": 2023,
