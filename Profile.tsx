@@ -12,19 +12,19 @@ export function Profile() {
             <View style={styles.infoContainer}>
                 <View style={styles.info}>
                     <Text style={styles.number}>3 Cars</Text>
-                    <Text>Rented</Text>
+                    <Text style = {styles.infoText}>Rented</Text>
                 </View>
                 <View style={styles.info}>
                     <Text style={styles.number}>5 Cars</Text>
-                    <Text>Favoured</Text>
+                    <Text style = {styles.infoText}>Favoured</Text>
                 </View>
                 <View style={styles.info}>
                     <Text style={styles.number}>2 Cars</Text>
-                    <Text>Reviewed</Text>
+                    <Text style = {styles.infoText}>Reviewed</Text>
                 </View>
             </View>
             <View style={styles.section}>
-                <Text>My Bookings</Text>
+                <Text style={styles.heading}>My Bookings</Text>
                 <TouchableOpacity><Text>View all</Text></TouchableOpacity>
             </View>
             <View style={styles.cards}>
@@ -32,7 +32,7 @@ export function Profile() {
                 <View style={styles.card}></View>
             </View>
             <View style={styles.section}>
-                <Text>Favoured Cars</Text>
+                <Text style={styles.heading}>Favoured Cars</Text>
                 <TouchableOpacity><Text>View all</Text></TouchableOpacity>
             </View>
             <View style={styles.card}></View>
@@ -70,11 +70,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 20,
+        backgroundColor: '#2f2f2f',
+        borderRadius: 20,
+        padding: 20,
     },
     info: {
         alignItems: 'center',
     },
     number: {
+        color: '#fff',
+    },
+    infoText: {
+        color: 'gray',
+    },
+    heading: {
         fontWeight: 'bold',
     },
     section: {
@@ -99,6 +108,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 20,
         alignItems: 'center',
+        marginBottom: 40,
     },
     editButtonText: {
         color: '#fff',
