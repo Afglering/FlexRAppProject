@@ -21,21 +21,25 @@ export function Profile() {
       </View>
       <View style={styles.infoContainer}>
         <View style={styles.info}>
-          <Text style={styles.number}>3 Cars</Text>
+          <Text style={styles.number}>X Cars</Text>
           <Text style={styles.infoText}>Rented</Text>
         </View>
         <View style={styles.info}>
-          <Text style={styles.number}>5 Cars</Text>
+          <Text style={styles.number}>X Cars</Text>
           <Text style={styles.infoText}>Favoured</Text>
         </View>
         <View style={styles.info}>
-          <Text style={styles.number}>2 Cars</Text>
+          <Text style={styles.number}>X Cars</Text>
           <Text style={styles.infoText}>Reviewed</Text>
         </View>
       </View>
       <View style={styles.section}>
         <Text style={styles.heading}>My Bookings</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            /* Button action here */
+          }}
+        >
           <Text>View all</Text>
         </TouchableOpacity>
       </View>
@@ -45,12 +49,21 @@ export function Profile() {
       </View>
       <View style={styles.section}>
         <Text style={styles.heading}>Favoured Cars</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            /* Button action here */
+          }}
+        >
           <Text>View all</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.card}></View>
-      <TouchableOpacity style={styles.editButton}>
+      <TouchableOpacity
+        style={styles.editButton}
+        onPress={() => {
+          /* Button action here */
+        }}
+      >
         <Text style={styles.editButtonText}>Edit Profile</Text>
       </TouchableOpacity>
     </ScrollView>
