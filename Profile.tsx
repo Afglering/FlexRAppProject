@@ -7,17 +7,15 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import users from "./data/users.json"; 
-import cars from "./data/cars.json"; 
-import { StackScreenProps } from '@react-navigation/stack';
-
+import users from "./data/users.json";
+import cars from "./data/cars.json";
+import { StackScreenProps } from "@react-navigation/stack";
 
 type RootStackParamList = {
   Profile: { userId: string };
 };
 
-type ProfileScreenProps = StackScreenProps<RootStackParamList, 'Profile'>;
-
+type ProfileScreenProps = StackScreenProps<RootStackParamList, "Profile">;
 
 export function Profile({ route }: ProfileScreenProps) {
   const { userId } = route.params;
@@ -38,10 +36,7 @@ export function Profile({ route }: ProfileScreenProps) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Image
-          style={styles.profileImage}
-          source={require(user.image)} 
-        />
+        <Image style={styles.profileImage} source={require(user.image)} />
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.username}>@{user.user_Name}</Text>
       </View>
