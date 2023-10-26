@@ -14,7 +14,7 @@ export function Profile() {
       <View style={styles.header}>
         <Image
           style={styles.profileImage}
-          source={require("../assets/profile.jpg")}
+          source={require("./assets/profiles/profile.jpg")}
         />
         <Text style={styles.name}>John Doge</Text>
         <Text style={styles.username}>@johndoge</Text>

@@ -5,19 +5,19 @@ import Swiper from "react-native-swiper";
 export function InfoSwipe() {
   const slidesData = [
     {
-      image: require("./assets/luxury1.jpg"),
+      image: require("./assets/promotion/luxury1.jpg"),
       title: "Boost Your Reputation With Amazing Cars",
       descriptor:
         "Rent amazing cars from all around, and display them on your social platforms.",
     },
     {
-      image: require("./assets/luxury2.jpg"),
+      image: require("./assets/promotion/luxury2.jpg"),
       title: "Be A Super Car Owner, Without Breaking The Bank",
       descriptor:
         "Owning a super car has never been easier. Give us your money and take our cars.",
     },
     {
-      image: require("./assets/luxury3.jpg"),
+      image: require("./assets/promotion/luxury3.jpg"),
       title: "Have A Super Car That's Not Being Used? Rent It Out!",
       descriptor:
         "Rent out your super car to others and make money while you're not using it.",

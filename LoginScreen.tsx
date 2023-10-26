@@ -11,7 +11,7 @@ import {
 export function LoginScreen() {
   return (
     <View style={styles.container}>
-      <Image source={require("./assets/luxury.jpg")} style={styles.logo} />
+      <Image source={require("./assets/promotion/luxury.jpg")} style={styles.logo} />
 
       <View style={styles.loginCard}>
         <Text style={styles.title}>Sign In</Text>

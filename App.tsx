@@ -1,9 +1,9 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { LoginScreen } from "./pages/LoginScreen"; 
-import { InfoSwipe } from "./pages/InfoSwipe"; 
-import { Profile } from './pages/Profile';
+import { LoginScreen } from "./LoginScreen"; 
+import { InfoSwipe } from "./InfoSwipe"; 
+import { Profile } from './Profile';
 
 const Stack = createStackNavigator();
 
