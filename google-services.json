@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "106831404898",
+    "project_id": "flexrapp-1721a",
+    "storage_bucket": "flexrapp-1721a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106831404898:android:b88cee3a3c63afb692d63b",
+        "android_client_info": {
+          "package_name": "com.mobiledev.flexrapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9FdPCi_15gl88wmu0Fkef5tUaOQwpRWo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

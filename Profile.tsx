@@ -10,8 +10,6 @@ import {
 import users from "./data/users.json";
 import cars from "./data/cars.json";
 import { StackScreenProps } from "@react-navigation/stack";
-import FastImage from 'react-native-fast-image';
-
 
 type RootStackParamList = {
   Profile: { userId: string };

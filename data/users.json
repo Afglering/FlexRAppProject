@@ -5,7 +5,7 @@
     "name": "John Doge",
     "user_Name": "JohnDoge",
     "email": "johndoge@example.com",
-    "password": "hashed_password_here",
+    "password": "123",
     "cars_Rented": [
       {
         "car_ID": "4a7c7d89-472c-4a4a-8107-37f6b5f7a34e",
