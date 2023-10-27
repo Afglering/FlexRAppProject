@@ -11,12 +11,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyD9FdPCi_15gl88wmu0Fkef5tUaOQwpRWo",
+  authDomain: "flexrapp-1721a.firebaseapp.com",
+  projectId: "flexrapp-1721a",
+  storageBucket: "flexrapp-1721a.appspot.com",
+  messagingSenderId: "106831404898",
+  appId: "1:106831404898:android:b88cee3a3c63afb692d63b",
 };
 
 // Initialize Firebase
