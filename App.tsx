@@ -5,10 +5,11 @@ import { LoginScreen } from "./LoginScreen";
 import { InfoSwipe } from "./InfoSwipe";
 import { Profile } from "./Profile";
 
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import {getStorage} from "firebase/storage";
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,7 +32,7 @@ const storage = getStorage(app);
 type RootStackParamList = {
   InfoSwipe: undefined;
   Login: undefined;
-  Profile: { userId: string };
+  Profile: { userData: any };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();

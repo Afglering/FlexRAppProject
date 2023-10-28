@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import users from "./data/users.json";
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 type RootStackParamList = {
-  Profile: { userId: string };
+  Profile: { userData: any };
 };
 
 type LoginScreenNavigationProp = StackNavigationProp<
@@ -26,21 +26,45 @@ export function LoginScreen({
 }: {
   navigation: LoginScreenNavigationProp;
 }) {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //function to handle login
-  const handleLogin = () => {
-    const user = users.find(
-      (u) => u.user_Name === username && u.password === password
-    );
-    if (user) {
-      navigation.navigate("Profile", { userId: user.user_ID });
-    } else {
-      Alert.alert(
-        "Invalid credentials",
-        "Please enter a valid username and password."
+  const handleLogin = async () => {
+    const auth = getAuth();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
+      const user = userCredential.user;
+
+      // Debugging statement
+      console.log("Firebase Auth UID:", user.uid);
+
+      // Fetch user data from Firestore
+      const db = getFirestore();
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+
+      // Debugging statement
+      console.log("Firestore userDoc data:", userDoc.data());
+
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        // Check if the user_ID in Firestore matches the UID from Firebase Auth
+        if (userData.user_ID === user.uid) {
+          navigation.navigate("Profile", { userData: userData });
+        } else {
+          Alert.alert(
+            "Error",
+            "User ID mismatch between Firestore and Firebase Auth."
+          );
+        }
+      } else {
+        Alert.alert("Error", "User data not found in Firestore.");
+      }
+    } catch (error: any) {
+      Alert.alert("Login Failed", error.message);
     }
   };
 
@@ -54,10 +78,10 @@ export function LoginScreen({
       <View style={styles.loginCard}>
         <Text style={styles.title}>Sign In</Text>
         <TextInput
-          placeholder="Username"
+          placeholder="Email"
           style={styles.input}
-          value={username}
-          onChangeText={setUsername}
+          value={email}
+          onChangeText={setEmail}
         />
         <TextInput
           placeholder="Password"
