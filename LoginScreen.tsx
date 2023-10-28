@@ -12,10 +12,12 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { StackNavigationProp } from "@react-navigation/stack";
 
+// Define the RootStackParamList
 type RootStackParamList = {
   Profile: { userData: any };
 };
 
+// Define the navigation prop
 type LoginScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "Profile"
@@ -29,14 +31,18 @@ export function LoginScreen({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Define the handleLogin function
   const handleLogin = async () => {
     const auth = getAuth();
     try {
+      // Sign in to Firebase Auth
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
+
+      // Get the user object from the userCredential
       const user = userCredential.user;
 
       // Debugging statement
@@ -49,10 +55,12 @@ export function LoginScreen({
       // Debugging statement
       console.log("Firestore userDoc data:", userDoc.data());
 
+      // Check if the userDoc exists
       if (userDoc.exists()) {
         const userData = userDoc.data();
         // Check if the user_ID in Firestore matches the UID from Firebase Auth
         if (userData.user_ID === user.uid) {
+          // Navigate to the Profile screen and pass the userData as a parameter
           navigation.navigate("Profile", { userData: userData });
         } else {
           Alert.alert(
