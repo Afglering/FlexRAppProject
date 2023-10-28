@@ -16,6 +16,7 @@ type RootStackParamList = {
 type ProfileScreenProps = StackScreenProps<RootStackParamList, "Profile">;
 
 export const Profile: React.FC<ProfileScreenProps> = ({ route, navigation }) => {
+  // Get the userData from the route params
   const userData = route.params.userData;
 
   return (
