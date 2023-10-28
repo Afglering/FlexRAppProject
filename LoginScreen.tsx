@@ -31,7 +31,6 @@ export function LoginScreen({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Define the handleLogin function
   const handleLogin = async () => {
     const auth = getAuth();
     try {
@@ -41,25 +40,20 @@ export function LoginScreen({
         email,
         password
       );
-
+  
       // Get the user object from the userCredential
       const user = userCredential.user;
-
-      // Debugging statement
-      console.log("Firebase Auth UID:", user.uid);
-
+  
       // Fetch user data from Firestore
       const db = getFirestore();
-      const userDoc = await getDoc(doc(db, "users", user.uid));
-
-      // Debugging statement
-      console.log("Firestore userDoc data:", userDoc.data());
-
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+  
       // Check if the userDoc exists
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        // Check if the user_ID in Firestore matches the UID from Firebase Auth
-        if (userData.user_ID === user.uid) {
+        // Check if the user's document ID in Firestore matches the UID from Firebase Auth
+        if (userDocRef.id === user.uid) {
           // Navigate to the Profile screen and pass the userData as a parameter
           navigation.navigate("Profile", { userData: userData });
         } else {
@@ -75,6 +69,7 @@ export function LoginScreen({
       Alert.alert("Login Failed", error.message);
     }
   };
+  
 
   return (
     <View style={styles.container}>
