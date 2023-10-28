@@ -40,15 +40,15 @@ export function LoginScreen({
         email,
         password
       );
-  
+
       // Get the user object from the userCredential
       const user = userCredential.user;
-  
+
       // Fetch user data from Firestore
       const db = getFirestore();
       const userDocRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userDocRef);
-  
+
       // Check if the userDoc exists
       if (userDoc.exists()) {
         const userData = userDoc.data();
@@ -69,7 +69,6 @@ export function LoginScreen({
       Alert.alert("Login Failed", error.message);
     }
   };
-  
 
   return (
     <View style={styles.container}>
