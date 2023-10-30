@@ -89,6 +89,7 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
             style={styles.formInput}
             value={password}
             onChangeText={setPassword}
+            secureTextEntry={true}
           />
           <TouchableOpacity style={styles.formBtn} onPress={handleLogin}>
             <Text style={styles.formBtnText}>Sign In</Text>
