@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
-import { getFirestore, collection, getDocs } from "firebase/firestore"; // Firestore imports
+import { StyleSheet, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import { getFirestore, collection, getDocs, arrayUnion, doc, updateDoc } from "firebase/firestore"; // Firestore imports
 import { RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "../App";
 import { Car } from "../types/Car";
 import { Color } from "../GlobalStyles";
+import { getAuth } from "firebase/auth";
 
 type BrowseScreenRouteProp = RouteProp<RootStackParamList, "Browse">;
 
@@ -22,39 +17,62 @@ const Browse: React.FC<BrowseScreenProps> = ({ route }) => {
   const [cars, setCars] = useState<Car[]>([]);
   const db = getFirestore();
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        const carCollectionRef = collection(db, "cars");
-        const querySnapshot = await getDocs(carCollectionRef);
-        const carData: Car[] = [];
-        querySnapshot.forEach((doc) => {
-          carData.push({ id: doc.id, ...doc.data() } as Car);
-        });
-        setCars(carData);
-      } catch (error) {
-        console.error("Error fetching cars:", error);
-      }
-    };
+  const fetchCars = async () => {
+    try {
+      const carCollectionRef = collection(db, "cars");
+      const querySnapshot = await getDocs(carCollectionRef);
+      const carData: Car[] = [];
+      querySnapshot.forEach((doc) => {
+        carData.push({ id: doc.id, ...doc.data() } as Car);
+      });
+      setCars(carData);
+    } catch (error) {
+      console.error("Error fetching cars:", error);
+    }
+  };
 
-    fetchCars();
-  }, []);
+  const handleBookNow = async (selectedCar: Car) => {
+    try {
+      const userId = getAuth().currentUser?.uid;
+
+      if (!userId) {
+        console.error("User is not signed in");
+        return;
+      }
+
+      const userDocRef = doc(db, "users", userId);
+      await updateDoc(userDocRef, {
+        cars_Rented: arrayUnion(selectedCar.id)
+      });
+
+      const carDocRef = doc(db, "cars", selectedCar.id);
+      await updateDoc(carDocRef, {
+        isAvailable: false
+      });
+
+      fetchCars();
+    } catch (error) {
+      console.error("Error booking car:", error);
+    }
+  };
 
   const renderCarCard = (car: Car) => (
     <TouchableOpacity style={styles.card} key={car.id}>
       <Image source={{ uri: car.image }} style={styles.image} />
-      <Text style={styles.title}>
-        {car.make} {car.model}
-      </Text>
-      <Text>{car.isAvailable ? "Available" : "Not Available"}</Text>
+      <Text style={styles.title}>{car.make} {car.model}</Text>
+      <Text style={styles.details}>{car.isAvailable ? "Available" : "Not Available"}</Text>
       <Text style={styles.details}>Year: {car.year}</Text>
       <Text style={styles.details}>Location: {car.location}</Text>
       <Text style={styles.details}>Price: ${car.rental_Price}/day</Text>
-      <TouchableOpacity style={styles.bookButton}>
+      <TouchableOpacity style={styles.bookButton} onPress={() => handleBookNow(car)}>
         <Text style={styles.buttonText}>Book Now</Text>
       </TouchableOpacity>
     </TouchableOpacity>
   );
+
+  useEffect(() => {
+    fetchCars();
+  }, []);
 
   return (
     <FlatList
