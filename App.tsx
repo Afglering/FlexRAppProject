@@ -5,6 +5,7 @@ import Login from "./screens/LoginScreen";
 import InfoSwipe from "./screens/InfoSwipeScreen";
 import Profile from "./screens/ProfileScreen";
 import Splash from "./screens/SplashScreen";
+import Browse from "./screens/Browse";
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import CarBrowseScreen from "./screens/BrowseScreen";
 
@@ -41,8 +42,7 @@ export type RootStackParamList = {
   InfoSwipe: undefined;
   Login: undefined;
   Profile: { userData: any };
-  Browse: undefined
-  
+  Browse: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -58,7 +58,7 @@ export default function App() {
         <Stack.Screen name="InfoSwipe" component={InfoSwipe} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Browse" component={CarBrowseScreen} />
+        <Stack.Screen name="Browse" component={Browse} />
       </Stack.Navigator>
     </NavigationContainer>
   );
