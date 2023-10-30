@@ -1,13 +1,14 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { LoginScreen } from "./LoginScreen";
+import Login from "./screens/LoginScreen";
 import { InfoSwipe } from "./InfoSwipe";
 import { Profile } from "./Profile";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
@@ -25,11 +26,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Get instances of Auth, Storage and Firestore
-const auth = getAuth(app);
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-type RootStackParamList = {
+export type RootStackParamList = {
   InfoSwipe: undefined;
   Login: undefined;
   Profile: { userData: any };
@@ -45,7 +48,7 @@ export default function App() {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="InfoSwipe" component={InfoSwipe} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
