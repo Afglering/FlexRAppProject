@@ -76,11 +76,11 @@ const Profile: React.FC<ProfileScreenProps> = ({ route }) => {
         </View>
       </View>
       <TouchableOpacity
-        style={styles.editButton}
+        style={styles.browseButton}
         onPress={() => {
         }}
       >
-        <Text style={styles.editButtonText}>Edit profile</Text>
+        <Text style={styles.editButtonText}>Browse Cars</Text>
       </TouchableOpacity>
 
       <View>
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   infoText: {
     color: "gray",
   },
-  editButton: {
+  browseButton: {
     borderRadius: Border.br_inputs_lg,
     padding: Padding.p_base,
     backgroundColor: Color.colorTeal,
