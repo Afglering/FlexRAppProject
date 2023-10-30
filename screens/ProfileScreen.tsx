@@ -78,10 +78,9 @@ const Profile: React.FC<ProfileScreenProps> = ({ route }) => {
       <TouchableOpacity
         style={styles.editButton}
         onPress={() => {
-          // Button action here
         }}
       >
-        <Text style={styles.editButtonText}>Edit Profile</Text>
+        <Text style={styles.editButtonText}>Edit profile</Text>
       </TouchableOpacity>
 
       <View>
