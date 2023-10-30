@@ -51,7 +51,9 @@ const InfoSwipe: React.FC<InfoScreenProps> = ({ navigation }) => {
       >
         {slidesData.map((slide, index) => (
           <View key={index} style={styles.slide}>
+            <View style={styles.imageWrapper}>
             <Image source={slide.image} style={styles.logo} />
+            </View>
             <View style={styles.loginCard}>
               <Text style={styles.title}>{slide.title}</Text>
               <Text style={styles.paragraph}>{slide.descriptor}</Text>
@@ -72,29 +74,30 @@ const InfoSwipe: React.FC<InfoScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.colorWhite,
+    backgroundColor: Color.colorGainsboro,
   },
   slide: {
     flex: 1,
     justifyContent: "center",
   },
+  imageWrapper: {
+    height: "100%",
+  },
   logo: {
-    height: "60%",
+    height: "100%",
     width: "100%",
     resizeMode: "cover",
   },
   loginCard: {
-    flex: 1,
-    justifyContent: "space-between",
     borderTopLeftRadius: Border.br_content,
     borderTopRightRadius: Border.br_content,
-    padding: 20,
-    backgroundColor: "#fff",
-    shadowOffset: { width: 0, height: -3 },
-    shadowOpacity: 0.2,
+    padding: 30,
+    backgroundColor: Color.colorWhite,
     shadowRadius: 3,
-    elevation: 5,
-    marginTop: -36,
+    elevation: 99,
+    width: "100%",
+    position: "absolute",
+    bottom: 0
   },
   title: {
     fontSize: FontSize.size_3xl,
@@ -102,14 +105,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     color: Color.colorDark,
-    marginBottom: 8,
-    marginTop: 5,
+    marginBottom: 20,
   },
   paragraph: {
     fontSize: FontSize.size_base,
     color: Color.colorDarkgray,
     textAlign: "center",
-    marginBottom: 15,
+    marginBottom: 30,
   },
   continueButton: {
     borderRadius: Border.br_inputs_lg,
@@ -120,7 +122,6 @@ const styles = StyleSheet.create({
   skipButton: {
     borderRadius: Border.br_inputs_lg,
     padding: Padding.p_base,
-    marginBottom: 14,
   },
   buttonText: {
     color: "#fff",
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
     color: Color.colorDarkgray,
   },
   paginationStyle: {
-    bottom: "42.5%",
+    bottom: "30%",
   },
 });
 

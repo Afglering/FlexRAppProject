@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -23,47 +23,82 @@ interface LoginScreenProps {
   navigation: LoginScreenNavigationProp;
 }
 
+interface ErrorState {
+  email: string;
+  password: string;
+}
+
 const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [errors, setErrors] = useState<ErrorState>({ email: '', password: '' });
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Trigger form validation when name,
+    // email, or password changes
+    validateForm();
+  }, [email, password]);
+
+  const validateForm = () => {
+    const newErrors: ErrorState = { email: '', password: '' };
+
+    // Validate email field
+    if (!email) {
+      newErrors.email = 'Email is required.';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Email is invalid.';
+    }
+
+    // Validate password field
+    if (!password) {
+      newErrors.password = 'Password is required.';
+    }
+
+    // Set the errors and update form validity
+    setErrors(newErrors);
+    setIsFormValid(Object.values(newErrors).every((error) => !error));
+  };
 
   const handleLogin = async () => {
-    const auth = getAuth();
+    if (isFormValid) {
+      const auth = getAuth();
 
-    try {
-      // Sign in to Firebase Auth
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      try {
+        // Sign in to Firebase Auth
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
-      // Get the user object from the userCredential
-      const user = userCredential.user;
+        // Get the user object from the userCredential
+        const user = userCredential.user;
 
-      // Fetch user data from Firestore
-      const db = getFirestore();
-      const userDocRef = doc(db, "users", user.uid);
-      const userDoc = await getDoc(userDocRef);
+        // Fetch user data from Firestore
+        const db = getFirestore();
+        const userDocRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userDocRef);
 
-      // Check if the userDoc exists
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        // Check if the user's document ID in Firestore matches the UID from Firebase Auth
-        if (userDocRef.id === user.uid) {
-          // Navigate to the Profile screen and pass the userData as a parameter
-          navigation.navigate("Profile", { userData: userData });
+        // Check if the userDoc exists
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          // Check if the user's document ID in Firestore matches the UID from Firebase Auth
+          if (userDocRef.id === user.uid) {
+            // Navigate to the Profile screen and pass the userData as a parameter
+            navigation.navigate("Profile", { userData: userData });
+          } else {
+            Alert.alert(
+              "Error",
+              "User ID mismatch between Firestore and Firebase Auth."
+            );
+          }
         } else {
-          Alert.alert(
-            "Error",
-            "User ID mismatch between Firestore and Firebase Auth."
-          );
+          Alert.alert("Error", "User data not found in Firestore.");
         }
-      } else {
-        Alert.alert("Error", "User data not found in Firestore.");
+      } catch (error: any) {
+        Alert.alert("Login Failed", error.message);
       }
-    } catch (error: any) {
-      Alert.alert("Login Failed", error.message);
     }
   };
 
@@ -78,20 +113,28 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
         <Text style={styles.title}>Sign In</Text>
 
         <View style={styles.form}>
-          <TextInput
-            placeholder="Email"
-            style={styles.formInput}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            placeholder="Password"
-            style={styles.formInput}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-          />
-          <TouchableOpacity style={styles.formBtn} onPress={handleLogin}>
+          <View style={styles.formGroup}>
+            <TextInput
+              placeholder="Email"
+              style={styles.formInput}
+              value={email}
+              onChangeText={setEmail}
+            />
+            {errors.email && <Text style={styles.error}>{errors.email}</Text>}
+          </View>
+
+          <View style={styles.formGroup}>
+            <TextInput
+              placeholder="Password"
+              style={styles.formInput}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={true}
+            />
+            {errors.password && <Text style={styles.error}>{errors.password}</Text>}
+          </View>
+
+          <TouchableOpacity style={styles.formBtn} disabled={!isFormValid} onPress={handleLogin}>
             <Text style={styles.formBtnText}>Sign In</Text>
           </TouchableOpacity>
 
@@ -137,6 +180,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     padding: Padding.p_lg,
   },
+  formGroup: {
+    marginBottom: 16
+  },
+  error: {
+    marginTop: 6,
+    fontSize: FontSize.size_sm,
+    color: Color.colorRed,
+  },
   title: {
     fontSize: FontSize.size_3xl,
     textAlign: "center",
@@ -148,7 +199,6 @@ const styles = StyleSheet.create({
     padding: Padding.p_sm,
     backgroundColor: Color.colorWhitesmoke_100,
     borderRadius: Border.br_inputs_lg,
-    marginBottom: 16,
   },
   formBtn: {
     borderRadius: Border.br_inputs_lg,
