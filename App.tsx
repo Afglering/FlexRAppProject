@@ -4,6 +4,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { LoginScreen } from "./LoginScreen";
 import { InfoSwipe } from "./InfoSwipe";
 import { Profile } from "./Profile";
+import Splash from "./Splash";
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -30,6 +32,7 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 export type RootStackParamList = {
+  Splash: undefined;
   InfoSwipe: undefined;
   Login: undefined;
   Profile: { userData: any };
@@ -41,9 +44,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="InfoSwipe"
+        initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
       >
+        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="InfoSwipe" component={InfoSwipe} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Profile" component={Profile} />
