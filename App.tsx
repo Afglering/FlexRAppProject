@@ -7,6 +7,7 @@ import Profile from "./screens/ProfileScreen";
 import Splash from "./screens/SplashScreen";
 import Browse from "./screens/Browse";
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+import CarBrowseScreen from "./screens/BrowseScreen";
 
 
 
