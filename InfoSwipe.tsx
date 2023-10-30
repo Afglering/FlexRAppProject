@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -33,7 +33,7 @@ export function InfoSwipe() {
   ];
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Swiper showsButtons={false} paginationStyle={styles.paginationStyle}>
         {slidesData.map((slide, index) => (
           <View key={index} style={styles.slide}>
@@ -61,7 +61,7 @@ export function InfoSwipe() {
           </View>
         ))}
       </Swiper>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   },
   loginCard: {
     flex: 1,
+    justifyContent: 'space-between', // Added
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 20,
@@ -89,18 +90,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     elevation: 5,
-    marginTop: -30,
-    maxHeight: "60%",
+    marginTop: -55,
   },
   title: {
     fontSize: 24,
     alignSelf: "center",
     textAlign: "center",
-    marginTop: 20,
     fontWeight: "bold",
   },
   paragraph: {
-    marginVertical: 10,
     fontSize: 16,
     color: "#000",
     textAlign: "center",
@@ -129,6 +127,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   paginationStyle: {
-    bottom: "40%",
+    bottom: "46%",
   },
 });
