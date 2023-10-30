@@ -8,17 +8,20 @@ import {
   ScrollView,
 } from "react-native";
 import { getFirestore, doc, getDoc } from "firebase/firestore"; // Firestore imports
-import { RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "../App";
 import { Color, FontSize, Padding, Border } from "../GlobalStyles";
+import { useNavigation, NavigationProp, RouteProp  } from "@react-navigation/native";
 
 type ProfileScreenRouteProp = RouteProp<RootStackParamList, "Profile">;
 
 interface ProfileScreenProps {
   route: ProfileScreenRouteProp;
+  navigation: NavigationProp<RootStackParamList, "Profile">;
 }
 
 const Profile: React.FC<ProfileScreenProps> = ({ route }) => {
+
+  const navigation = useNavigation<NavigationProp<RootStackParamList, "Profile">>();
   const userData = route.params.userData;
   const [carImages, setCarImages] = useState<
     Array<{ type: string; url: string }>
@@ -77,7 +80,7 @@ const Profile: React.FC<ProfileScreenProps> = ({ route }) => {
       </View>
       <TouchableOpacity
         style={styles.browseButton}
-        onPress={() => {
+        onPress={() => {navigation.navigate("Browse")
         }}
       >
         <Text style={styles.editButtonText}>Browse Cars</Text>

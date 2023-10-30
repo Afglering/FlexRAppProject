@@ -7,7 +7,6 @@ import Profile from "./screens/ProfileScreen";
 import Splash from "./screens/SplashScreen";
 import Browse from "./screens/Browse";
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
-import CarBrowseScreen from "./screens/BrowseScreen";
 
 
 
@@ -51,7 +50,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Browse"
+        initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Splash" component={Splash} />
