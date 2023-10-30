@@ -1,8 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from './App';
+
+type InfoSwipeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'InfoSwipe'>;
 
 export function InfoSwipe() {
+
+  const navigation = useNavigation<InfoSwipeScreenNavigationProp>();
+
   const slidesData = [
     {
       image: require("./assets/promotion/luxury1.jpg"),
@@ -25,7 +33,7 @@ export function InfoSwipe() {
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Swiper showsButtons={false} paginationStyle={styles.paginationStyle}>
         {slidesData.map((slide, index) => (
           <View key={index} style={styles.slide}>
@@ -44,7 +52,7 @@ export function InfoSwipe() {
               <TouchableOpacity
                 style={styles.skipButton}
                 onPress={() => {
-                  /* Skip button action here */
+                  navigation.navigate('Login');
                 }}
               >
                 <Text style={styles.buttonText2}>Skip</Text>
@@ -53,7 +61,7 @@ export function InfoSwipe() {
           </View>
         ))}
       </Swiper>
-    </View>
+    </ScrollView>
   );
 }
 

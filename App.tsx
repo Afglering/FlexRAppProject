@@ -29,7 +29,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-type RootStackParamList = {
+export type RootStackParamList = {
   InfoSwipe: undefined;
   Login: undefined;
   Profile: { userData: any };
@@ -41,7 +41,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="InfoSwipe"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="InfoSwipe" component={InfoSwipe} />
