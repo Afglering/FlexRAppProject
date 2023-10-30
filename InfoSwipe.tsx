@@ -1,14 +1,16 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from './App';
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "./App";
 
-type InfoSwipeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'InfoSwipe'>;
+type InfoSwipeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "InfoSwipe"
+>;
 
 export function InfoSwipe() {
-
   const navigation = useNavigation<InfoSwipeScreenNavigationProp>();
 
   const slidesData = [
@@ -52,7 +54,7 @@ export function InfoSwipe() {
               <TouchableOpacity
                 style={styles.skipButton}
                 onPress={() => {
-                  navigation.navigate('Login');
+                  navigation.navigate("Login");
                 }}
               >
                 <Text style={styles.buttonText2}>Skip</Text>
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
   },
   loginCard: {
     flex: 1,
-    justifyContent: 'space-between', // Added
+    justifyContent: "space-between", // Added
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 20,

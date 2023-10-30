@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
-import { getFirestore, doc, getDoc } from "firebase/firestore"; // Firestore imports
+import { getFirestore, doc, getDoc } from "firebase/firestore"; 
 
 type RootStackParamList = {
   Profile: { userData: any };
