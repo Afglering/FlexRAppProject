@@ -9,6 +9,7 @@ export const FontFamily = {
   export const FontSize = {
     size_sm: 14,
     size_base: 16,
+    size_lg: 20,
     size_3xl: 22,
   };
   /* Colors */
@@ -23,8 +24,9 @@ export const FontFamily = {
     colorGainsboro: "#d9d9d9",
     colorDimgray: "#696c70",
     colorBlack: "#000",
-    colorDarkgray: "#92959a",
+    colorDarkgray: "#787878",
     colorTeal: "#006266",
+    colorDark: "#202529",
   };
   /* Paddings */
   export const Padding = {

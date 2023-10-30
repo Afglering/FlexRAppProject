@@ -12,7 +12,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from '../App';
-import { Color, FontFamily, FontSize, Padding, Border } from "../GlobalStyles";
+import { Color, FontSize, Padding, Border } from "../GlobalStyles";
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: FontSize.size_3xl,
     textAlign: "center",
-    fontFamily: FontFamily.MBold,
     fontWeight: "700",
     marginBottom: 30
   },

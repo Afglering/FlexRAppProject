@@ -2,8 +2,8 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/LoginScreen";
-import { InfoSwipe } from "./InfoSwipe";
-import { Profile } from "./Profile";
+import InfoSwipe from "./screens/InfoSwipeScreen";
+import Profile from "./screens/ProfileScreen";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -44,7 +44,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="InfoSwipe"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="InfoSwipe" component={InfoSwipe} />
