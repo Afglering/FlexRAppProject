@@ -5,7 +5,10 @@ import { Color, FontSize, Padding, Border } from "../GlobalStyles";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../App";
 
-type InfoScreenNavigationProp = StackNavigationProp<RootStackParamList, 'InfoSwipe'>;
+type InfoScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "InfoSwipe"
+>;
 
 interface InfoScreenProps {
   navigation: InfoScreenNavigationProp;
@@ -13,7 +16,7 @@ interface InfoScreenProps {
 
 const InfoSwipe: React.FC<InfoScreenProps> = ({ navigation }) => {
   const swiperRef = useRef(null);
-  
+
   const slidesData = [
     {
       image: require("../assets/promotion/luxury1.jpg"),
@@ -37,11 +40,15 @@ const InfoSwipe: React.FC<InfoScreenProps> = ({ navigation }) => {
 
   const handleSkipButtonPress = () => {
     navigation.navigate("Login");
-  }
+  };
 
   return (
     <View style={styles.container}>
-      <Swiper ref={swiperRef} showsButtons={false} paginationStyle={styles.paginationStyle}>
+      <Swiper
+        ref={swiperRef}
+        showsButtons={false}
+        paginationStyle={styles.paginationStyle}
+      >
         {slidesData.map((slide, index) => (
           <View key={index} style={styles.slide}>
             <Image source={slide.image} style={styles.logo} />
@@ -50,17 +57,9 @@ const InfoSwipe: React.FC<InfoScreenProps> = ({ navigation }) => {
               <Text style={styles.paragraph}>{slide.descriptor}</Text>
               <TouchableOpacity
                 style={styles.continueButton}
-                onPress={() => {
-                  /* Continue button action here */
-                }}
-              >
-                <Text style={styles.buttonText}>Continue</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.skipButton}
                 onPress={handleSkipButtonPress}
               >
-                <Text style={styles.buttonText2}>Skip</Text>
+                <Text style={styles.buttonText}>Skip</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -68,7 +67,7 @@ const InfoSwipe: React.FC<InfoScreenProps> = ({ navigation }) => {
       </Swiper>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -86,6 +85,7 @@ const styles = StyleSheet.create({
   },
   loginCard: {
     flex: 1,
+    justifyContent: "space-between",
     borderTopLeftRadius: Border.br_content,
     borderTopRightRadius: Border.br_content,
     padding: 20,
@@ -95,35 +95,32 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 5,
     marginTop: -36,
-    maxHeight: "60%",
   },
   title: {
     fontSize: FontSize.size_3xl,
-    maxWidth: "80%",
     alignSelf: "center",
     textAlign: "center",
-    marginTop: 30,
     fontWeight: "bold",
     color: Color.colorDark,
-    marginBottom: 8
+    marginBottom: 8,
+    marginTop: 5,
   },
   paragraph: {
-    marginVertical: 10,
     fontSize: FontSize.size_base,
     color: Color.colorDarkgray,
     textAlign: "center",
-    marginBottom: 30
+    marginBottom: 15,
   },
   continueButton: {
     borderRadius: Border.br_inputs_lg,
     padding: Padding.p_base,
     backgroundColor: Color.colorTeal,
-    marginBottom: 14
+    marginBottom: 14,
   },
   skipButton: {
     borderRadius: Border.br_inputs_lg,
     padding: Padding.p_base,
-    marginBottom: 14
+    marginBottom: 14,
   },
   buttonText: {
     color: "#fff",
@@ -137,7 +134,7 @@ const styles = StyleSheet.create({
     color: Color.colorDarkgray,
   },
   paginationStyle: {
-    bottom: "40%",
+    bottom: "42.5%",
   },
 });
 

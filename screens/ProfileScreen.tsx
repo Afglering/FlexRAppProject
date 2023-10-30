@@ -12,27 +12,29 @@ import { RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "../App";
 import { Color, FontSize, Padding, Border } from "../GlobalStyles";
 
-type ProfileScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
+type ProfileScreenRouteProp = RouteProp<RootStackParamList, "Profile">;
 
 interface ProfileScreenProps {
   route: ProfileScreenRouteProp;
 }
 
 const Profile: React.FC<ProfileScreenProps> = ({ route }) => {
-    const userData = route.params.userData;
-    const [carImages, setCarImages] = useState<Array<{ type: string; url: string }>>([]);
+  const userData = route.params.userData;
+  const [carImages, setCarImages] = useState<
+    Array<{ type: string; url: string }>
+  >([]);
 
-    useEffect(() => {
-      const db = getFirestore();
+  useEffect(() => {
+    const db = getFirestore();
 
-      const rentedPromises = userData.cars_Rented.map((carId: string) =>
-        getDoc(doc(db, "cars", carId))
-      );
-      const favoredPromises = userData.cars_Favored.map((carId: string) =>
-        getDoc(doc(db, "cars", carId))
-      );
+    const rentedPromises = userData.cars_Rented.map((carId: string) =>
+      getDoc(doc(db, "cars", carId))
+    );
+    const favoredPromises = userData.cars_Favored.map((carId: string) =>
+      getDoc(doc(db, "cars", carId))
+    );
 
-      Promise.all(rentedPromises)
+    Promise.all(rentedPromises)
       .then((rentedDocs) => {
         const rentedCarImages = rentedDocs.map((carDoc) => ({
           type: "rented",
@@ -52,67 +54,67 @@ const Profile: React.FC<ProfileScreenProps> = ({ route }) => {
       .catch((error) => {
         console.error("Error fetching car images:", error);
       });
-    }, [userData]);
+  }, [userData]);
 
-    return (
-      <ScrollView style={styles.container}>
-        <View style={styles.header}>
-          <Image style={styles.profileImage} source={{ uri: userData.image }} />
-          <View>
-            <Text style={styles.name}>{userData.name}</Text>
-            <Text style={styles.username}>@{userData.user_Name}</Text>
-          </View>
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Image style={styles.profileImage} source={{ uri: userData.image }} />
+        <View>
+          <Text style={styles.name}>{userData.name}</Text>
+          <Text style={styles.username}>@{userData.user_Name}</Text>
         </View>
-        <View style={styles.infoContainer}>
-          <View style={styles.info}>
-            <Text style={styles.number}>{userData.cars_Rented.length} Cars</Text>
-            <Text style={styles.infoText}>Rented</Text>
-          </View>
-          <View style={styles.info}>
-            <Text style={styles.number}>{userData.cars_Favored.length} Cars</Text>
-            <Text style={styles.infoText}>Favored</Text>
-          </View>
+      </View>
+      <View style={styles.infoContainer}>
+        <View style={styles.info}>
+          <Text style={styles.number}>{userData.cars_Rented.length} Cars</Text>
+          <Text style={styles.infoText}>Rented</Text>
         </View>
-        <TouchableOpacity
-          style={styles.editButton}
-          onPress={() => {
-            // Button action here
-          }}
-        >
-          <Text style={styles.editButtonText}>Edit Profile</Text>
-        </TouchableOpacity>
+        <View style={styles.info}>
+          <Text style={styles.number}>{userData.cars_Favored.length} Cars</Text>
+          <Text style={styles.infoText}>Favored</Text>
+        </View>
+      </View>
+      <TouchableOpacity
+        style={styles.editButton}
+        onPress={() => {
+          // Button action here
+        }}
+      >
+        <Text style={styles.editButtonText}>Edit Profile</Text>
+      </TouchableOpacity>
 
-        <View>
-          <Text style={styles.headerText}>My Bookings</Text>
-        </View>
-        <View style={styles.carImagesContainer}>
-          {carImages
-            .filter((image) => image.type === "rented")
-            .map((image, index) => (
-              <Image
-                key={index}
-                style={styles.carImage}
-                source={{ uri: image.url }}
-              />
-            ))}
-        </View>
-        <View>
-          <Text style={styles.headerText}>Cars Favored</Text>
-        </View>
-        <View style={styles.carImagesContainer}>
-          {carImages
-            .filter((image) => image.type === "favored")
-            .map((image, index) => (
-              <Image
-                key={index}
-                style={styles.carImage}
-                source={{ uri: image.url }}
-              />
-            ))}
-        </View>
-      </ScrollView>
-    )
-}
+      <View>
+        <Text style={styles.headerText}>My Bookings</Text>
+      </View>
+      <View style={styles.carImagesContainer}>
+        {carImages
+          .filter((image) => image.type === "rented")
+          .map((image, index) => (
+            <Image
+              key={index}
+              style={styles.carImage}
+              source={{ uri: image.url }}
+            />
+          ))}
+      </View>
+      <View>
+        <Text style={styles.headerText}>Cars Favored</Text>
+      </View>
+      <View style={styles.carImagesContainer}>
+        {carImages
+          .filter((image) => image.type === "favored")
+          .map((image, index) => (
+            <Image
+              key={index}
+              style={styles.carImage}
+              source={{ uri: image.url }}
+            />
+          ))}
+      </View>
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -139,11 +141,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: FontSize.size_lg,
     color: Color.colorDark,
-    fontWeight: "500"
+    fontWeight: "500",
   },
   username: {
     color: Color.colorDimgray,
-    fontSize: FontSize.size_sm
+    fontSize: FontSize.size_sm,
   },
   infoContainer: {
     flexDirection: "row",
@@ -168,7 +170,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorTeal,
     marginTop: 10,
     alignItems: "center",
-    marginBottom: 14
+    marginBottom: 14,
   },
   editButtonText: {
     color: "#fff",
@@ -194,4 +196,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile
+export default Profile;

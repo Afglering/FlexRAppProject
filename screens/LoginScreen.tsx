@@ -11,10 +11,13 @@ import {
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from '../App';
+import { RootStackParamList } from "../App";
 import { Color, FontSize, Padding, Border } from "../GlobalStyles";
 
-type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+type LoginScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Login"
+>;
 
 interface LoginScreenProps {
   navigation: LoginScreenNavigationProp;
@@ -24,7 +27,7 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async() => {
+  const handleLogin = async () => {
     const auth = getAuth();
 
     try {
@@ -62,11 +65,11 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
     } catch (error: any) {
       Alert.alert("Login Failed", error.message);
     }
-  }
+  };
 
   return (
     <View style={styles.login}>
-      <Image 
+      <Image
         style={styles.image}
         source={require("../assets/promotion/luxury3.jpg")}
       />
@@ -87,10 +90,7 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
             value={password}
             onChangeText={setPassword}
           />
-          <TouchableOpacity 
-            style={styles.formBtn}
-            onPress={handleLogin}
-          >
+          <TouchableOpacity style={styles.formBtn} onPress={handleLogin}>
             <Text style={styles.formBtnText}>Sign In</Text>
           </TouchableOpacity>
 
@@ -102,19 +102,17 @@ const Login: React.FC<LoginScreenProps> = ({ navigation }) => {
               <Text>Sign Up</Text>
             </TouchableOpacity>
           </View>
-          
+
           <View>
-            <TouchableOpacity 
-              style={styles.formBtnInstagram}
-            >
+            <TouchableOpacity style={styles.formBtnInstagram}>
               <Text style={styles.formBtnTextAlt}>Sign in with Instagram</Text>
             </TouchableOpacity>
           </View>
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   login: {
@@ -124,7 +122,7 @@ const styles = StyleSheet.create({
   image: {
     height: "60%",
     width: "100%",
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
   contentWrapper: {
     flex: 1,
@@ -136,35 +134,33 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
     left: 0,
     bottom: 0,
-    padding: Padding.p_lg
+    padding: Padding.p_lg,
   },
   title: {
     fontSize: FontSize.size_3xl,
     textAlign: "center",
     fontWeight: "700",
-    marginBottom: 30
+    marginBottom: 30,
   },
-  form: {
-
-  },
+  form: {},
   formInput: {
     padding: Padding.p_sm,
     backgroundColor: Color.colorWhitesmoke_100,
     borderRadius: Border.br_inputs_lg,
-    marginBottom: 16
+    marginBottom: 16,
   },
   formBtn: {
     borderRadius: Border.br_inputs_lg,
     padding: Padding.p_base,
     backgroundColor: Color.colorTeal,
     marginTop: 10,
-    marginBottom: 14
+    marginBottom: 14,
   },
   formBtnInstagram: {
     borderRadius: Border.br_inputs_lg,
     padding: Padding.p_base,
     backgroundColor: Color.colorWhitesmoke_100,
-    marginBottom: 14
+    marginBottom: 14,
   },
   formBtnText: {
     textAlign: "center",
@@ -181,8 +177,8 @@ const styles = StyleSheet.create({
   formLinks: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 30
-  }
+    marginBottom: 30,
+  },
 });
 
 export default Login;
