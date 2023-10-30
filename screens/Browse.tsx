@@ -46,9 +46,10 @@ const Browse: React.FC<BrowseScreenProps> = ({ route }) => {
       <Text style={styles.title}>
         {car.make} {car.model}
       </Text>
+      <Text>{car.isAvailable ? "Available" : "Not Available"}</Text>
       <Text style={styles.details}>Year: {car.year}</Text>
       <Text style={styles.details}>Location: {car.location}</Text>
-      <Text style={styles.details}>Price: ${car.rental_price}/day</Text>
+      <Text style={styles.details}>Price: ${car.rental_Price}/day</Text>
       <TouchableOpacity style={styles.bookButton}>
         <Text style={styles.buttonText}>Book Now</Text>
       </TouchableOpacity>
