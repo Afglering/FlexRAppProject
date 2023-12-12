@@ -4,7 +4,7 @@ import { getFirestore, collection, getDocs, arrayUnion, doc, updateDoc } from "f
 import { RouteProp, useNavigation, NavigationProp } from "@react-navigation/native";
 import { RootStackParamList } from "../App";
 import { Car } from "../types/Car";
-import { Color } from "../GlobalStyles";
+import { Border, Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { getAuth } from "firebase/auth";
 
 
@@ -114,12 +114,13 @@ const Browse: React.FC<BrowseScreenProps> = ({ route }) => {
   }, []);
 
   return (
-    <FlatList
+    <><FlatList
       data={cars}
       numColumns={2}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => renderCarCard(item)}
-    />
+      renderItem={({ item }) => renderCarCard(item)} /><TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        <Text style={styles.backButtonText}>Go Back</Text>
+      </TouchableOpacity></>
   );
 };
 
@@ -156,6 +157,20 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
+  },
+  backButton: {
+    backgroundColor: Color.colorTeal, 
+    padding: Padding.p_sm, 
+    borderRadius: Border.br_inputs, 
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: Padding.p_base, 
+    marginBottom: Padding.p_base, 
+  },
+  backButtonText: {
+    color: Color.colorWhite,
+    fontSize: FontSize.size_base, 
+    fontFamily: FontFamily.manropeMedium, 
   },
 });
 
