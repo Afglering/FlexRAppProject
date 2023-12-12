@@ -6,7 +6,11 @@ import InfoSwipe from "./screens/InfoSwipeScreen";
 import Profile from "./screens/ProfileScreen";
 import Splash from "./screens/SplashScreen";
 import Browse from "./screens/Browse";
+import CarProfileScreen from "./screens/CarProfileScreen";
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+import { Car } from "./types/Car";
+
+
 
 
 
@@ -15,6 +19,7 @@ import { initializeApp } from "firebase/app";
 import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -42,6 +47,7 @@ export type RootStackParamList = {
   Login: undefined;
   Profile: { userData: any };
   Browse: undefined;
+  CarProfile: { car: Car };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -58,6 +64,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Browse" component={Browse} />
+        <Stack.Screen name="CarProfile" component={CarProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

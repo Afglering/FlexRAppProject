@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, Image, FlatList, TouchableOpacity, Alert } from "react-native";
 import { getFirestore, collection, getDocs, arrayUnion, doc, updateDoc } from "firebase/firestore"; // Firestore imports
-import { RouteProp } from "@react-navigation/native";
+import { RouteProp, useNavigation, NavigationProp } from "@react-navigation/native";
 import { RootStackParamList } from "../App";
 import { Car } from "../types/Car";
 import { Color } from "../GlobalStyles";
 import { getAuth } from "firebase/auth";
+
 
 type BrowseScreenRouteProp = RouteProp<RootStackParamList, "Browse">;
 
@@ -16,6 +17,7 @@ interface BrowseScreenProps {
 const Browse: React.FC<BrowseScreenProps> = ({ route }) => {
   const [cars, setCars] = useState<Car[]>([]);
   const db = getFirestore();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const fetchCars = async () => {
     try {
@@ -94,7 +96,7 @@ const Browse: React.FC<BrowseScreenProps> = ({ route }) => {
   
 
   const renderCarCard = (car: Car) => (
-    <TouchableOpacity style={styles.card} key={car.id}>
+    <TouchableOpacity style={styles.card} key={car.id} onPress={() => navigation.navigate('CarProfile', { car: car })}>
       <Image source={{ uri: car.image }} style={styles.image} />
       <Text style={styles.title}>{car.make} {car.model}</Text>
       <Text style={styles.details}>{car.isAvailable ? "Available" : "Not Available"}</Text>
