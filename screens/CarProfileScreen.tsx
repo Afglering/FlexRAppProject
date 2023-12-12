@@ -24,8 +24,8 @@ const CarProfileScreen: React.FC<CarProfileScreenProps> = ({ route }) => {
         <Text style={styles.detail}>Year: {car.year}</Text>
         <Text style={styles.detail}>Price: ${car.rental_Price}/day</Text>
         <Text style={styles.detail}>Location: {car.location}</Text>
-        <Text style={styles.detail}>Top Speed: {car.top_speed} km/h</Text>
-        <Text style={styles.detail}>Horse Power: {car.horse_power}</Text>
+        <Text style={styles.detail}>Top Speed: {car.top_Speed} km/h</Text>
+        <Text style={styles.detail}>Horse Power: {car.horse_Power}</Text>
         <Text style={styles.detail}>Availability: {car.isAvailable ? "Available" : "Not Available"}</Text>
         <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
       <Text style={styles.backButtonText}>Go Back</Text>

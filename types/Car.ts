@@ -1,7 +1,7 @@
 export interface Car {
     id: string;
     acceleration: number;
-    horse_power: number;
+    horse_Power: number;
     image: string;
     isAvailable: boolean;
     isBest: boolean;
@@ -10,6 +10,6 @@ export interface Car {
     make: string;
     model: string;
     rental_Price: number;
-    top_speed: number;
+    top_Speed: number;
     year: number;
 }
